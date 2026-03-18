@@ -29,8 +29,7 @@ Para usarlo lo primero que hice es instalar Raspberry pi imager
 
 Seleccione el modelo de mi raspberry, el sistema operativo, el microsd de almacenamiento, nombre del dispositivo, zona horaria, nombre de usuario, contraseña, red, ME PERMITIO ACTIVAR EL SSH, confirme mis elecciones y empezo a escribir.
 
-//insertar imagen del RapberryPiImager
-
+![Raspberry pi Imager](img/RaspberryPiImager.png)
   
 
 Puse la microsd en el raspberry y espere a que iniciara y terminara con las ultimas configuraciones
@@ -39,8 +38,7 @@ Configure el internet
 
 Por ultimo habilite el vnc para poder controlarlo desde la laptop
 
-//insertar imagen del RealVNC
-
+![RealVNC](img/RealVNC.png)
   
 
 Instale el RealVNC Vierwer en la laptop y con la direccion ip del raspberry me conecte
@@ -85,7 +83,7 @@ Este comando *descarga un script que luego se usa para instalar Node.js (v22) de
 
 me voy a matar dice que node.js no es compatible con 32 bits
 
-//insertar imagen del Fail1
+![fail](img/Fail1.png)
 
 creo que voy a tener que volver al raspberry pi os de 64 bits
 
@@ -100,7 +98,7 @@ corro el setup script
 
 installo node.js
 
-`apt install -y nodejs`
+`sudo apt install -y nodejs`
 
   
 
@@ -116,11 +114,7 @@ para ver si esta instalado solo escribo
 
 `git`
 
-  
-
-si no sale nada, es que no esta instalado, entonces lo instalo con
-
-`sudo apt install git -y`
+si esta instalado 
 
   
 
@@ -134,18 +128,50 @@ Entro al repositorio
 instalo la aplicacion
 `node --run install-mm`
 
-copio el archivo de configuracion
-`cp config/config.js.sample config/config.js`
+![node instalado](img/NodejsInstalado.png)
 
 inicio la aplicacion 
 `node --run start`
 
-## Ensamblaje
-Como cortamos la madera y asi 
-gran tuto https://michaelteeuw.nl/series/MagicMirror
+![node run](img/Noderun.png)
+
+salieron muchos errores no se si eso esta bien, a lo mejor tiene que ver con que se me fue el internet a media descarga nose
+
+corro eso para que se instale todo al 100
+
+![por si acaso](img/npmInstall.png)
+
+lo voy a correr a ver si esta todo bien 
+lo intento correr con 
+`node --run start`
+
+pero me da un error
+
+![no config file](img/NoConfigFile.png)
+
+creo que me salte este paso jeje
+copio el archivo de configuracion
+`cp config/config.js.sample config/config.js`
+
+ahora si lo corro 
+`node --run start`
+
+y ya funciono lestgoooo
+
+![funciono](img/Funciono.png)
 
 
-# Fase 2: Añadir modulos y sensores
+# Fase 2: Configuración, modulos y sensores
+## Configurar
+**Configurar modulos existentes**
+
+**Cambiar orientación de pantalla**
+
+**Autostart**
+
+## Agregar modulos
+**Spotify**
+
 ## Sensores 
 **Proximidad**
 https://github.com/paviro/MMM-PIR-Sensor
@@ -161,16 +187,22 @@ Cicuito
 Script 
 Modulo
 
-## Otros modulos
-**Spotify**
+# Ensamblaje
+Como cortamos la madera y asi 
+gran tuto https://michaelteeuw.nl/series/MagicMirror
 
 # Fase 3: Pagina web
 
-# Fase 4: Espejo de shrek
+
+IDEAS 
+# Fase X: Espejo de shrek
 https://youtu.be/TWfRdWaov9s?si=9I-1MyFQDMZEY0m9
 https://courses.media.mit.edu/2016spring/mass65/2016/05/14/the-magic-mirror/
 
-# Fase 5: IoT
+# Fase X: Camara 
+Para poder interactuar con el espejo 
+
+# Fase X: IoT
 
 
 
