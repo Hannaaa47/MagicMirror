@@ -2,16 +2,51 @@
 # **Magic Mirror**
 
   
-
 # Contenido
 
-bla
+**[Ensamblaje](#ensamblaje)**
+- [Materiales](#materiales)
+- [Planos](#planos)
+- [Corte y armado](#corte-y-armado)
 
-bla
+**[Fase 1: Que funcione](#fase-1-que-funcione)**
+- [Distribución de Linux](#distribución-de-linux)
+- [Instalación del sistema operativo](#instalación-del-sistema-operativo)
+- [Configuración inicial](#configuración-inicial)
+- [Descargar Magic Mirror](#descargar-magic-mirror)
+- [Instalación de Node.js](#instalación-de-nodejs)
+- [Clonar repositorio](#clonar-repositorio)
+- [Primer arranque](#primer-arranque)
+- [Solución de errores](#solución-de-errores)
 
-bla
+**[Fase 2: Configuración, módulos y sensores](#fase-2-configuración-modulos-y-sensores)**
+- [Configurar](#configurar)
+  - [Orientación de pantalla](#orientación-de-pantalla)
+  - [Autostart](#autostart)
+  - [Módulos existentes](#módulos-existentes)
+- [Agregar sensores](#agregar-sensores)
+  - [Sensor de proximidad](#sensor-de-proximidad)
+  - [Humedad y temperatura](#humedad-y-temperatura)
+- [Agregar módulos](#agregar-módulos)
+  - [Spotify](#spotify)
 
-  
+**[Fase 3: Página web](#fase-3-página-web)**
+
+**[Fase X: Espejo de Shrek](#fase-x-espejo-de-shrek)**
+
+**[Fase X: IoT](#fase-x-iot)**
+
+**[Fase X: Cámara](#fase-x-cámara)**
+
+# Ensamblaje
+
+Materiales
+
+Planos
+
+Como cortamos la madera y asi 
+gran tuto https://michaelteeuw.nl/series/MagicMirror
+ 
   
 
 # Fase 1: Que funcione
@@ -163,35 +198,54 @@ y ya funciono lestgoooo
 
 # Fase 2: Configuración, modulos y sensores
 ## Configurar
-**Configurar modulos existentes**
-
 **Cambiar orientación de pantalla**
+Para cambiar la orientación de la pantalla en Raspberry Pi (rotar 90°, 180°, 270°), la forma más sencilla es usar la herramienta gráfica: Menú > Preferencias > Screen Configuration. En la herramienta, selecciona tu pantalla (ej. HDMI-1 o DSI-1), ve a "Orientación" y elige la rotación deseada
+
+**Cambiar configuración**
+https://docs.magicmirror.builders/configuration/introduction.html
+
 
 **Autostart**
+https://docs.magicmirror.builders/configuration/autostart.html
 
-## Agregar modulos
+
+## Modulos
+**Configurar modulos existentes**
+https://docs.magicmirror.builders/modules/configuration.html
+
 **Spotify**
+https://github.com/Fabrizz/MMM-OnSpotify 
+
 
 ## Sensores 
-**Proximidad**
+**Agregar sensor de proximidad**
 https://github.com/paviro/MMM-PIR-Sensor
 https://wokwi.com/projects/359631459962659841
 Circuito 
 Script
 Modulo
 
-**Humedad y temperatura**
+**Agregar sensor de humedad y temperatura**
 https://github.com/ryck/MMM-DHT-Sensor
 https://wokwi.com/projects/357620843461800961
 Cicuito 
 Script 
 Modulo
 
-# Ensamblaje
-Como cortamos la madera y asi 
-gran tuto https://michaelteeuw.nl/series/MagicMirror
-
 # Fase 3: Pagina web
+Modulo que permite prender, apagar, reiniciar
+https://github.com/Jopyth/MMM-Remote-Control 
+
+metas
+📱 Celular (web)
+   ↓ WebSocket
+🖥️ Servidor Node.js
+   ↓ (notificación)
+🪞 MagicMirror (módulo personalizado)
+
+pasos
+Tutorial de WebSocket (con Servidor Node.js)
+Tutorial de módulos de MagicMirror
 
 
 IDEAS 
@@ -200,7 +254,7 @@ https://youtu.be/TWfRdWaov9s?si=9I-1MyFQDMZEY0m9
 https://courses.media.mit.edu/2016spring/mass65/2016/05/14/the-magic-mirror/
 
 # Fase X: Camara 
-Para poder interactuar con el espejo 
+Para poder interactuar con el espejo como si fuera una interfaz
 
 # Fase X: IoT
 
