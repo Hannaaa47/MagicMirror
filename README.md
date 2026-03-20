@@ -199,9 +199,28 @@ y ya funciono lestgoooo
 # Fase 2: Configuración, modulos y sensores
 ## Configurar
 **Cambiar orientación de pantalla**
-Para cambiar la orientación de la pantalla en Raspberry Pi (rotar 90°, 180°, 270°), la forma más sencilla es usar la herramienta gráfica: Menú > Preferencias > Screen Configuration. En la herramienta, selecciona tu pantalla (ej. HDMI-1 o DSI-1), ve a "Orientación" y elige la rotación deseada
+Para cambiar la orientación de la pantalla en Raspberry Pi voy a maenu>preferences>control center
+me pidio contraseña para abrirlo
+
+y voy al apartado de screens
+
+![menu de screens](img/screenMenu.png)
+
+selecciono left
+
+![alt text](img/aceptarConfiguracion.png)
+
 
 **Cambiar configuración**
+en la terminal voy al directorio
+
+`cd /MagicMirror/config/`
+
+abro el archivo de config.js en thonny para modificarlo mas facil 
+
+![alt text](image.png)
+
+
 https://docs.magicmirror.builders/configuration/introduction.html
 
 
