@@ -1,63 +1,38 @@
 {
   "morning": [
-    "¡Buenos días! Hoy va a ser un gran día.",
-    "¡Despierta con energía, el mundo te espera!",
-    "¡Qué bonita mañana para comenzar con todo!",
-    "Eres increíble, ¡y hoy lo vas a demostrar!",
-    "¡Cada día es una nueva oportunidad, aprovéchala!",
-    "¡Buenos días! Eres más fuerte de lo que crees.",
-    "¡Hoy tienes la fuerza de un volcán y la calma del mar!",
-    "La mañana es tuya, ¡sal y conquístala!"
+    "Slay",
+    "Loba loba",
+    "A los culos no les hacen corridos",
+    "Mereces todo lo bueno que la vida te ofrece"
   ],
   "afternoon": [
-    "¡Ánimo, ya va la mitad del día!",
-    "Sigues en pie y eso ya es una victoria.",
-    "¡Buenas tardes! Tómate un momento para respirar.",
-    "Has hecho mucho hoy, ¡sigue así!",
-    "La tarde es perfecta para seguir brillando.",
-    "¡Tu esfuerzo de hoy vale la pena!",
-    "¡Casi terminas el día, no pares ahora!",
-    "¡Buenas tardes! Recuerda beber agua. 💧"
+    "¡Ánimo!",
+    "Eres suficiente, exactamente tal y como eres hoy"
   ],
   "evening": [
-    "¡Buenas noches! Descansa, te lo has ganado.",
-    "Otro día completado con éxito. ¡Orgullo total!",
-    "La noche llegó, es hora de recargar energías.",
-    "¡Qué buen día has tenido! Mañana más.",
-    "El descanso también es parte del éxito.",
-    "Cierra los ojos sabiendo que hiciste lo mejor que pudiste.",
-    "¡Buenas noches! Mañana el mundo te necesita de nuevo.",
-    "Relájate, que mañana hay más aventuras por vivir."
+    "Descansa",
+    "A mimir",
+    "DUERMETE"
   ],
   "....-01-01": [
-    "¡FELIZ AÑO NUEVO! ¡Que este año sea brutal! 🎉",
-    "¡Año nuevo, tú mismo pero con más poder!",
-    "¡Feliz 2025! ¡Todo lo que se viene es tuyo!"
-  ],
-  "....-02-14": [
-    "¡Feliz Día del Amor! 💕 Recuerda amarte primero a ti.",
-    "¡Hoy es un buen día para decirle a alguien cuánto lo aprecias!",
-    "¡Feliz San Valentín! El amor empieza en uno mismo."
+    "¡FELIZ AÑO NUEVO!"
   ],
   "....-12-24": [
-    "¡Feliz Nochebuena! 🎄 Abraza a los tuyos con fuerza.",
-    "Esta noche es mágica, disfrútala al máximo.",
-    "¡Que la Navidad te traiga paz y buenas vibras!"
+    "¡Feliz Nochebuena!"
   ],
   "....-12-25": [
-    "¡Feliz Navidad! 🎅 Que tengas un día lleno de amor.",
-    "Hoy es un día especial, ¡celébrenlo con todo!",
-    "¡Feliz Navidad! Que los regalos más importantes sean los abrazos."
+    "¡FELIZ NAVIDAAAD!",
+    "HOHOHO"
   ],
   "....-12-31": [
-    "¡Última noche del año! ¡A celebrar con todo! 🎆",
-    "Este año fue tuyo, ¡el siguiente también lo será!",
-    "¡Feliz Fin de Año! Que lo que viene supere todo lo pasado."
+    "Feliz noche vieja.",
+    "Ve sacando las maletas.",
+    "Pasado pisado."
   ],
   "sunny": [
-    "¡Qué día tan hermoso! Aprovéchalo al máximo.",
+    "Puro team calor.",
     "El sol salió y tú también deberías salir.",
-    "Día despejado, mente despejada. ¡A brillar!"
+    "¡A brillar!"
   ],
   "cloudy": [
     "Nublado afuera, pero tú siempre traes la luz.",
@@ -65,13 +40,8 @@
     "Aunque no haya sol, tú iluminas el cuarto."
   ],
   "rain": [
-    "La lluvia es perfecta para quedarse en casa y pensar.",
-    "¡Que llueva! Tú eres el paraguas de este hogar.",
-    "Días lluviosos, cobija y café. ¡Disfrútalo!"
-  ],
-  "snow": [
-    "¡Está nevando! Es un día de cuento. ❄️",
-    "La nieve cubre todo de blanco, como una página nueva.",
-    "¡Cuídate del frío! Estás demasiado valioso para resfriarte."
+    "Cantando bajo la lluvia.",
+    "Cafe y un libro.",
+    "Un sueñito mejor."
   ]
 }

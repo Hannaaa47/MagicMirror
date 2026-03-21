@@ -78,10 +78,10 @@ let config = {
 			module: "compliments",
 			position: "lower_third",
 			config: {
-				remoteFile: 'https://gist.githubusercontent.com/user/e28a69665b8839f6e9a7acd6b4acc97d/raw/be1dee8f805a433f6ee0fa3556d1927da14e7799/compliments.json',
+				remoteFile: 'https://github.com/Hannaaa47/MagicMirror/blob/main/src/compliments.json',
 				compliments: {
-					"....-01-01": [
-					"FELIZ AÑOO NUEVO WUJUU!"
+					"....-03-20": [
+					"Si funciona!"
 					],
 					rain: [
 					"Rainy days I'm thinkin' 'bout you"
