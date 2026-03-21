@@ -27,19 +27,20 @@ let config = {
 	httpsPrivateKey: "",	// HTTPS private key path, only require when useHttps is true
 	httpsCertificate: "",	// HTTPS Certificate path, only require when useHttps is true
 
-	language: "en",
-	locale: "en-US",   // this variable is provided as a consistent location
-			   // it is currently only used by 3rd party modules. no MagicMirror code uses this value
-			   // as we have no usage, we  have no constraints on what this field holds
-			   // see https://en.wikipedia.org/wiki/Locale_(computer_software) for the possibilities
+	language: "spa", // cambio el idioma a español
 
 	logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
-	timeFormat: 24,
+	timeFormat: 12, // cambio el formato de horas de 24 a 12 
 	units: "metric",
 
 	modules: [
 		{
 			module: "alert",
+			config: {
+				effect: exploader,
+				alert_effect: bouncyflip,
+				welcome_message: "Hola bb"
+			}
 		},
 		{
 			module: "updatenotification",
@@ -47,25 +48,46 @@ let config = {
 		},
 		{
 			module: "clock",
-			position: "top_left"
+			position: "top_left", // This can be any of the regions.
+			config: {
+				timeFormat: 12,
+				timezone: "America/Mazatlan",
+				displaySeconds: false,
+				showWeek: true,
+				showMoonTimes: phase,
+				dateFormat: "dddd, Do MMMM YYYY"
+			},
 		},
 		{
 			module: "calendar",
-			header: "US Holidays",
+			header: "Calendario",
 			position: "top_left",
 			config: {
 				calendars: [
 					{
-						fetchInterval: 7 * 24 * 60 * 60 * 1000,
+						
+						fetchInterval: 24 * 60 * 60 * 1000,
+						dateFormat: "DD/MM/YY",
 						symbol: "calendar-check",
-						url: "https://ics.calendarlabs.com/76/mm3137/US_Holidays.ics"
+						url: "https://calendar.google.com/calendar/ical/hanna.amadorholamundo%40gmail.com/public/basic.ics"
 					}
 				]
 			}
 		},
 		{
 			module: "compliments",
-			position: "lower_third"
+			position: "lower_third",
+			config: {
+				remoteFile: 'https://gist.githubusercontent.com/user/e28a69665b8839f6e9a7acd6b4acc97d/raw/be1dee8f805a433f6ee0fa3556d1927da14e7799/compliments.json',
+				compliments: {
+					"....-01-01": [
+					"FELIZ AÑOO NUEVO WUJUU!"
+					],
+					rain: [
+					"Rainy days I'm thinkin' 'bout you"
+					]
+				}
+			}
 		},
 		{
 			module: "weather",
@@ -73,37 +95,10 @@ let config = {
 			config: {
 				weatherProvider: "openmeteo",
 				type: "current",
-				lat: 40.776676,
-				lon: -73.971321
+				lat: 24.8091,
+        		lon: -107.3940
 			}
-		},
-		{
-			module: "weather",
-			position: "top_right",
-			header: "Weather Forecast",
-			config: {
-				weatherProvider: "openmeteo",
-				type: "forecast",
-				lat: 40.776676,
-				lon: -73.971321
-			}
-		},
-		{
-			module: "newsfeed",
-			position: "bottom_bar",
-			config: {
-				feeds: [
-					{
-						title: "New York Times",
-						url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
-					}
-				],
-				showSourceTitle: true,
-				showPublishDate: true,
-				broadcastNewsFeeds: true,
-				broadcastNewsUpdates: true
-			}
-		},
+		}
 	]
 };
 

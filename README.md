@@ -40,10 +40,23 @@
 
 # Ensamblaje
 
-Materiales
+**Materiales**
+raspberry $
+sensor de movimiento $
+sensor de temperatura y humedad $
+espejo $631
+adaptador $
+monitor $
+madera de pino $
+barniz $
+tornillos 
 
-Planos
+**herramientas que utilizamos**
 
+**Planos**
+https://www.tinkercad.com/things/acXXvp0teFw/edit?returnTo=%2Fdashboard
+
+**Pasos**
 Como cortamos la madera y asi 
 gran tuto https://michaelteeuw.nl/series/MagicMirror
  
@@ -216,25 +229,65 @@ en la terminal voy al directorio
 
 `cd /MagicMirror/config/`
 
-abro el archivo de config.js en thonny para modificarlo mas facil 
+abro el archivo de config.js en thonny para modificarlo mas facil, al final copie todo y lo modifique en mi lap y ya despues nomas lo pegue en thonny porque era mas facil
 
 ![alt text](image.png)
 
+de la configuracion general, solo cambie el idioma y el timeFormat
+`language: "spa", // cambio el idioma a español`
+
+`	timeFormat: 12, // cambio el formato de horas de 24 a 12 `
 
 https://docs.magicmirror.builders/configuration/introduction.html
 
 
 **Autostart**
+Para que se incie solo usaremos PM2, es un gestor de procesos avanzado para aplicaciones Node.js que garantiza que las aplicaciones estén siempre activas
+
+abro la terminal y instalo PM2
+`sudo npm install -g pm2`
+
+para que siempre se inicie al encender la raspberry
+`pm2 startup`
+
+... luego
+
 https://docs.magicmirror.builders/configuration/autostart.html
 
 
 ## Modulos
 **Configurar modulos existentes**
+
+para esto segui editando el archivo de conofig.js
+ahora en la parte de modules, cambie algunas configuraciones para ver que hacian
 https://docs.magicmirror.builders/modules/configuration.html
+toda la info esta en esta pagina 
 
-**Spotify**
-https://github.com/Fabrizz/MMM-OnSpotify 
+cuando llegue a la parte del **calendario**, queria que se viera mi calendario no el gringo que estaba ahi, en el mismo documento decia que podia poner cualquier
+calandario en iCal, entonces fui a mi calendario de google
 
+![alt text](image-1.png)
+
+en el apartado de configuracion, eligo el calendario que quiero, y luego le doy al apartado donde dice Integrar calendario, aqui aparece un link 
+con el calendario en el formato iCal que ocupaba
+
+![alt text](image-2.png)
+
+creo que el modulo de complementos es de mis favoritos
+al parecer puedes elegir los cumplidos segun el momento del dia, segun la fecha y si lo integramos con el modulo de clima tambien se puede dependiendo del clima
+
+`compliments: {
+    "....-01-01": [
+    "FELIZ AÑOO NUEVO WUJUU!"
+    ],
+    rain: [
+    "Rainy days I'm thinkin' 'bout you"
+    ]
+  }`
+
+tambien hay una opcion para que los tomara desde un repositorio remoto, pero como no encontre ninguno en español, decidi hacer uno
+
+/workspaces/MagicMirror/src/compliments.json
 
 ## Sensores 
 **Agregar sensor de proximidad**
