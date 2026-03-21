@@ -286,8 +286,11 @@ al parecer puedes elegir los cumplidos segun el momento del dia, segun la fecha 
   }`
 
 tambien hay una opcion para que los tomara desde un repositorio remoto, pero como no encontre ninguno en español, decidi hacer uno
+aqui puse los cumplidos que queria que dijera y luego lo cupie como raw code 
+`remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',`
 
-/workspaces/MagicMirror/src/compliments.json
+asi va por ahora 
+![alt text](image-3.png)
 
 ## Sensores 
 **Agregar sensor de proximidad**

@@ -27,7 +27,7 @@ let config = {
     httpsPrivateKey: "",	// HTTPS private key path, only require when useHttps is true
     httpsCertificate: "",	// HTTPS Certificate path, only require when useHttps is true
 
-    language: "spa", // cambio el idioma a español
+    language: "es", // cambio el idioma a español
 
     logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
     timeFormat: 12, // cambio el formato de horas de 24 a 12 
@@ -51,8 +51,8 @@ let config = {
                 timeFormat: 12,
                 timezone: "America/Mazatlan",
                 displaySeconds: false,
-                showWeek: "short",
-                showMoonTimes: "phase",
+                showWeek: true,
+                showMoonTimes: true,
                 dateFormat: "dddd, Do MMMM YYYY"
             },
         },
@@ -67,7 +67,7 @@ let config = {
                         fetchInterval: 24 * 60 * 60 * 1000,
                         dateFormat: "DD/MM/YY",
                         symbol: "calendar-check",
-                        url: "https://calendar.google.com/calendar/ical/hanna.amadorholamundo%40gmail.com/public/basic.ics"
+                        url: "https://calendar.google.com/calendar/ical/hanna.amadorholamundo%40gmail.com/private-bfdcd8902d24f8d790b54c3267d4ffdf/basic.ics"
                     }
                 ]
             }
@@ -76,11 +76,8 @@ let config = {
             module: "compliments",
             position: "lower_third",
             config: {
-                remoteFile: 'https://github.com/Hannaaa47/MagicMirror/blob/main/src/compliments.json',
+                remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',
                 compliments: {
-                    "....-01-01": [
-                        "FELIZ AÑO NUEVO WUJUU!"
-                    ],
                     "....-03-20": [
                         "funciono!"
                     ]
