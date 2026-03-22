@@ -63,7 +63,7 @@ let config = {
             config: {
                 calendars: [
                     {
-                        
+                        maximumNumberOfDays: 10,
                         fetchInterval: 24 * 60 * 60 * 1000,
                         dateFormat: "DD/MM/YY",
                         symbol: "calendar-check",
@@ -74,7 +74,7 @@ let config = {
         },
         {
             module: "compliments",
-            position: "lower_third",
+            position: "bottom_bar",
             config: {
                 remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',
                 compliments: {
@@ -94,7 +94,19 @@ let config = {
                 lat: 24.8091,
                 lon: -107.3940
             }
+        },
+        {
+            module: 'MMM-PIR-Sensor', 
+            position: "lower_third", // Remove this line to avoid having an visible indicator
+            config: {
+                powerSavingDelay: 60, // Turn HDMI OFF after 60 seconds of no motion, until motion is detected again
+                presenceIndicator: "fa-eye", // Customizing the indicator
+                presenceOffIndicator: "eye-slash", // Customizing the indicator
+                presenceIndicatorColor: "#f51d16", // Customizing the indicator
+                presenceOffIndicatorColor: "#2b271c" // Customizing the indicator
+            }
         }
+
     ]
 };
 

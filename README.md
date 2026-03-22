@@ -231,7 +231,7 @@ en la terminal voy al directorio
 
 abro el archivo de config.js en thonny para modificarlo mas facil, al final copie todo y lo modifique en mi lap y ya despues nomas lo pegue en thonny porque era mas facil
 
-![alt text](image.png)
+![alt text](img/image.png)
 
 de la configuracion general, solo cambie el idioma y el timeFormat
 `language: "spa", // cambio el idioma a español`
@@ -266,46 +266,89 @@ toda la info esta en esta pagina
 cuando llegue a la parte del **calendario**, queria que se viera mi calendario no el gringo que estaba ahi, en el mismo documento decia que podia poner cualquier
 calandario en iCal, entonces fui a mi calendario de google
 
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 en el apartado de configuracion, eligo el calendario que quiero, y luego le doy al apartado donde dice Integrar calendario, aqui aparece un link 
-con el calendario en el formato iCal que ocupaba
+con el calendario en el formato iCal que ocupaba, primero copie el link que dice direccion publica en formato iCal y no funcionaba, decia que no lo encontraba, entonces copie el que si era, el que dice direccion secreta en formato iCal y ya funciono.
 
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 creo que el modulo de complementos es de mis favoritos
-al parecer puedes elegir los cumplidos segun el momento del dia, segun la fecha y si lo integramos con el modulo de clima tambien se puede dependiendo del clima
+Puedes elegir los cumplidos segun el momento del dia, segun la fecha y si lo integramos con el modulo de clima tambien se puede dependiendo del clima
 
 `compliments: {
-    "....-01-01": [
-    "FELIZ AÑOO NUEVO WUJUU!"
-    ],
-    rain: [
-    "Rainy days I'm thinkin' 'bout you"
+    "....-03-20": [
+        "funciono!"
     ]
   }`
 
 tambien hay una opcion para que los tomara desde un repositorio remoto, pero como no encontre ninguno en español, decidi hacer uno
-aqui puse los cumplidos que queria que dijera y luego lo cupie como raw code 
+aqui puse los cumplidos que queria que dijera, lo subi a github y es muy importante copiar la direccion como raw code, primero copie la direccion normal del archivo y no funciono.
+
 `remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',`
 
 asi va por ahora 
-![alt text](image-3.png)
 
-## Sensores 
-**Agregar sensor de proximidad**
-https://github.com/paviro/MMM-PIR-Sensor
+![alt text](img/image-5.png)
+
+## Sensor
+
+**Proximidad**
+
+primero voy a probar que el sensor funcione bien y luego añado el modulo
+
+conecte el sensor a los pines
+vcc
+gdc
+amarillo
+
+![gpios](img/image-7.png)
+
+pines de la raspberry
+
+![alt text](img/image-6.png)
+
+instalo la libreria para los gpios, escribo en la terminal 
+`sudo apt install python3-rpi.gpio`
+
+y lo pruebo con este script
 https://wokwi.com/projects/359631459962659841
-Circuito 
-Script
-Modulo
+solo tuve que cambiar una libreria porque usaba una que no estaba disponible 
 
-**Agregar sensor de humedad y temperatura**
-https://github.com/ryck/MMM-DHT-Sensor
-https://wokwi.com/projects/357620843461800961
-Cicuito 
-Script 
-Modulo
+ajusto los potenciometros de holdtime y sensibility
+
+ahora si añado el modulo
+
+https://github.com/paviro/MMM-PIR-Sensor
+
+sigo las instrucciones
+dice que primero navege por magicmirror, modules y clone el modulo 
+
+![alt text](image.png)
+
+`npm install`
+
+para instalar todas las dependencias del modulo 
+
+Add your user (pi?) to the gpio group by executing sudo usermod -a -G gpio pi.
+
+`sudo usermod -a -G gpio hanna`
+
+Execute sudo chmod u+s /opt/vc/bin/tvservice && sudo chmod u+s /bin/chvt to allow turning on/off the hdmi output.
+
+`sudo chmod u+s /usr/bin/chvt`
+
+añado el modulo a config.js
+
+como que no se instalaron bien todas las dependencias
+
+ademas dice que ocupa
+
+`npm install wiring-pi`
+
+dio errores no pude
+
+
 
 # Fase 3: Pagina web
 Modulo que permite prender, apagar, reiniciar
