@@ -26,17 +26,6 @@
   - [Módulos existentes](#módulos-existentes)
 - [Agregar sensores](#agregar-sensores)
   - [Sensor de proximidad](#sensor-de-proximidad)
-  - [Humedad y temperatura](#humedad-y-temperatura)
-- [Agregar módulos](#agregar-módulos)
-  - [Spotify](#spotify)
-
-**[Fase 3: Página web](#fase-3-página-web)**
-
-**[Fase X: Espejo de Shrek](#fase-x-espejo-de-shrek)**
-
-**[Fase X: IoT](#fase-x-iot)**
-
-**[Fase X: Cámara](#fase-x-cámara)**
 
 # Ensamblaje
 
@@ -350,34 +339,4 @@ dio errores no pude
 
 
 
-# Fase 3: Pagina web
-Modulo que permite prender, apagar, reiniciar
-https://github.com/Jopyth/MMM-Remote-Control 
 
-metas
-📱 Celular (web)
-   ↓ WebSocket
-🖥️ Servidor Node.js
-   ↓ (notificación)
-🪞 MagicMirror (módulo personalizado)
-
-pasos
-Tutorial de WebSocket (con Servidor Node.js)
-Tutorial de módulos de MagicMirror
-
-
-IDEAS 
-# Fase X: Espejo de shrek
-https://youtu.be/TWfRdWaov9s?si=9I-1MyFQDMZEY0m9
-https://courses.media.mit.edu/2016spring/mass65/2016/05/14/the-magic-mirror/
-
-# Fase X: Camara 
-Para poder interactuar con el espejo como si fuera una interfaz
-
-# Fase X: IoT
-
-
-
-  
-
-> Written with [StackEdit](https://stackedit.io/).
