@@ -5,82 +5,87 @@
 # Contenido
 
 **[Ensamblaje](#ensamblaje)**
-- [Materiales](#materiales)
-- [Planos](#planos)
-- [Corte y armado](#corte-y-armado)
+  - [Materiales](#materiales)
+  - [Corte y armado](#corte-y-armado)
 
 **[Fase 1: Que funcione](#fase-1-que-funcione)**
-- [Distribución de Linux](#distribución-de-linux)
-- [Instalación del sistema operativo](#instalación-del-sistema-operativo)
-- [Configuración inicial](#configuración-inicial)
-- [Descargar Magic Mirror](#descargar-magic-mirror)
-- [Instalación de Node.js](#instalación-de-nodejs)
-- [Clonar repositorio](#clonar-repositorio)
-- [Primer arranque](#primer-arranque)
-- [Solución de errores](#solución-de-errores)
+  - [Distribución de Linux](#distribución-de-linux)
+  - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
+  - [Instalación de Node.js](#instalación-de-nodejs)
+  - [Clonar repositorio](#clonar-repositorio)
+  - [Primer arranque](#primer-arranque)
+  - [Solución de errores](#solución-de-errores)
 
-**[Fase 2: Configuración, módulos y sensores](#fase-2-configuración-modulos-y-sensores)**
+**[Fase 2: Configuración, módulos](#fase-2-configuración-modulos-y-sensores)**
 - [Configurar](#configurar)
   - [Orientación de pantalla](#orientación-de-pantalla)
-  - [Autostart](#autostart)
   - [Módulos existentes](#módulos-existentes)
-- [Agregar sensores](#agregar-sensores)
-  - [Sensor de proximidad](#sensor-de-proximidad)
+
 
 # Ensamblaje
 
-**Materiales**
-raspberry $
-sensor de movimiento $
-sensor de temperatura y humedad $
-espejo $631
-adaptador $
-monitor $
-madera de pino $
-barniz $
-tornillos 
-
-**herramientas que utilizamos**
-
-**Planos**
-https://www.tinkercad.com/things/acXXvp0teFw/edit?returnTo=%2Fdashboard
-
-**Pasos**
-Como cortamos la madera y asi 
-gran tuto https://michaelteeuw.nl/series/MagicMirror
+### Materiales
  
-  
+| Componente | Costo |
+|---|---|
+| Raspberry Pi 3B | $1,364 |
+| Espejo bidireccional | $631 |
+| Adaptador HDMI a VGA | $112 |
+| Monitor | $100 |
+| Madera de pino (1" x 3" x 2m y 1" x 4" x 2m) | $255 |
+ 
+**Herramientas utilizadas:**
+- Lijadora
+- Taladro
+- Sierra redonda eléctrica
+
+### Corte y armado
+ 
+Ya que conseguimos la madera, calculamos y marcamos los cortes necesarios. La madera de 3" se cortó en 2 piezas de 29.8 cm y 2 piezas de 57.3 cm para hacer el frente; la madera de 4" se cortó en 2 piezas de 42.6 cm y 2 piezas de 54.3 cm para los lados.
+ 
+![Corte de madera](img/corte.jpeg)
+ 
+Después lijamos la madera y unimos las piezas con tornillos para formar el marco.
+ 
+![Armado del marco](img/armar.jpeg)
+ 
+Añadimos soportes de madera en la parte trasera para sostener el espejo y el monitor. Pegamos el Raspberry Pi al monitor con cinta doble cara y conectamos todos los componentes. Como el monitor solo tiene entrada VGA y el Raspberry Pi solo tiene salida HDMI, fue necesario usar un adaptador.
+
+![Vista trasera](img/atras.jpeg)
+
+Y asi se ve
+
+![Vista frontal](img/frente.jpeg)
 
 # Fase 1: Que funcione
 
 ## Distribucion de linux
 
-Antes de este proyecto habia trabajado con Raspbian OS de 64 bits Debian 12 bookworm, y el raspberry funcionaba lento por lo que decidimos buscar otras opciones.
-Buscamos otras alternativas:
+En proyectos anteriores había trabajado con Raspbian OS de 64 bits (Debian 12 Bookworm), pero el Raspberry Pi funcionaba lento, por lo que buscamos otras opciones:
+ 
+- **DietPi**: Lo probé en una máquina virtual y resultó incompatible con la biblioteca Electron.
+- **Raspberry Pi OS de 32 bits**: Igualmente incompatible con algunas bibliotecas de Node.js.
+ 
+Por lo tanto, optamos por **Raspberry Pi OS de 64 bits**.
 
- - La primera opción era DietPi, lo probe en una maquina virtual en mi computadora y me di cuenta que no era compatible con la biblioteca Electron.
-  - Probe Raspberry Pi OS de 32 bits pero igual era incompatible con una biblioteca de node.js.
- Asi que para no complicarnos la vida usaremos Rasperry Pi OS de 64 bits.
+### Instalación del sistema operativo
 
-Para usarlo lo primero que hice es instalar Raspberry pi imager
+Para usarlo, lo primero que hice fue instalar Raspberry Pi Imager.
 
-Seleccione el modelo de mi raspberry, el sistema operativo, el microsd de almacenamiento, nombre del dispositivo, zona horaria, nombre de usuario, contraseña, red, ME PERMITIO ACTIVAR EL SSH, confirme mis elecciones y empezo a escribir.
+Seleccioné el modelo de mi Raspberry Pi, el sistema operativo, el microSD de almacenamiento, nombre del dispositivo, zona horaria, nombre de usuario, contraseña, red; me permitió activar el SSH, confirmé mis elecciones y empezó a escribir.
 
 ![Raspberry pi Imager](img/RaspberryPiImager.png)
-  
 
-Puse la microsd en el raspberry y espere a que iniciara y terminara con las ultimas configuraciones
+Puse la microSD en el Raspberry y esperé a que iniciara y terminara con las últimas configuraciones.
 
-Configure el internet
+Configuré la conexión a internet.
 
-Por ultimo habilite el vnc para poder controlarlo desde la laptop
+Por último, habilité el VNC para poder controlarlo desde la laptop.
 
 ![RealVNC](img/RealVNC.png)
   
 
-Instale el RealVNC Vierwer en la laptop y con la direccion ip del raspberry me conecte
-
-  
+Instalé el RealVNC Viewer en la laptop y con la dirección IP del Raspberry me conecté, la cual se podía ver fácilmente al poner el mouse sobre el símbolo de internet de la Raspberry.
 
 Busco actualizaciones
 
@@ -88,182 +93,139 @@ Busco actualizaciones
 
 `sudo apt upgrade -y`
 
-  
-
 ## Descargar Magic Mirror
 
-Para esto voy a seguir los pasos que dice la pagina oficial https://docs.magicmirror.builders/getting-started/installation.html
+Para esto voy a seguir los pasos que dice la página oficial  
+https://docs.magicmirror.builders/getting-started/installation.html
 
-  
+### Instalación de Node.js
 
 Dice que el primer paso es **descargar e instalar node.js**
 
-Para eso sigo las instrucciones del repo de github de node.js
-
+Para eso sigo las instrucciones del repo de GitHub de node.js  
 https://github.com/nodesource/distributions/blob/master/DEV_README.md#installation-instructions
 
-  
-
-para ver si curl esta instalado hago
-
+Verificar que curl esté instalado  
 `curl --version`
 
-si esta instalado
+sí está instalado
 
-  
-
-Este comando *descarga un script que luego se usa para instalar Node.js (v22) desde el repositorio oficial de NodeSource.
+Este comando *descarga un script que luego se usa para instalar Node.js (v22) desde el repositorio oficial de NodeSource.*
 
 `curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh`
 
-  
-
-me voy a matar dice que node.js no es compatible con 32 bits
+Node.js no es compatible con sistemas de 32 bits, por eso fue necesario usar Raspberry Pi OS de 64 bits.
 
 ![fail](img/Fail1.png)
 
-creo que voy a tener que volver al raspberry pi os de 64 bits
+Tuve que hacer todo desde el inicio.
 
-  
-  
-
-corro el setup script
-
+Ejecutar el script de configuración:  
 `sudo bash nodesource_setup.sh`
 
-  
-
-installo node.js
-
+Instalar Node.js:  
 `sudo apt install -y nodejs`
 
-  
-
-compruebo la instalacion
-
+Verificar la instalación:  
 `node -v`
 
-  
+### Clonar repositorio
 
-El siguiente paso es ver si esta instalado **git**
+El siguiente paso es ver si está instalado **git**
 
-para ver si esta instalado solo escribo
-
+Para ver si está instalado solo escribo  
 `git`
 
-si esta instalado 
+sí está instalado
 
-  
-
-El paso 3 seria **clonar el repositorio del magic mirror**
-
+El siguiente paso sería clonar el repositorio del Magic Mirror:  
 `git clone https://github.com/MagicMirrorOrg/MagicMirror.git`
 
-Entro al repositorio 
+Entro al repositorio  
 `cd MagicMirror`
 
-instalo la aplicacion
+Instalo la aplicación  
 `node --run install-mm`
 
 ![node instalado](img/NodejsInstalado.png)
 
-inicio la aplicacion 
+Inicio la aplicación  
 `node --run start`
 
 ![node run](img/Noderun.png)
 
-salieron muchos errores no se si eso esta bien, a lo mejor tiene que ver con que se me fue el internet a media descarga nose
-
-corro eso para que se instale todo al 100
+Salieron muchos errores, corro eso para que se instale todo al 100
 
 ![por si acaso](img/npmInstall.png)
 
-lo voy a correr a ver si esta todo bien 
-lo intento correr con 
+Lo vuelvo a intentar correr a ver si está todo bien  
 `node --run start`
 
 pero me da un error
 
 ![no config file](img/NoConfigFile.png)
 
-creo que me salte este paso jeje
-copio el archivo de configuracion
+Me había saltado un paso, copio el archivo de configuración  
 `cp config/config.js.sample config/config.js`
 
-ahora si lo corro 
+Ahora sí lo corro  
 `node --run start`
 
-y ya funciono lestgoooo
+Y ya funcionó
 
 ![funciono](img/Funciono.png)
 
+# Fase 2: Configuración, módulos y sensores
 
-# Fase 2: Configuración, modulos y sensores
 ## Configurar
-**Cambiar orientación de pantalla**
-Para cambiar la orientación de la pantalla en Raspberry Pi voy a maenu>preferences>control center
-me pidio contraseña para abrirlo
 
-y voy al apartado de screens
+#### Orientación de pantalla
+Para cambiar la orientación de la pantalla en Raspberry Pi voy a Menú > Preferences > Control Center.  
+Ingreso la contraseña.
+
+Y voy al apartado de screens.
 
 ![menu de screens](img/screenMenu.png)
 
-selecciono left
+Selecciono left
 
 ![alt text](img/aceptarConfiguracion.png)
 
+#### Configuración general
 
-**Cambiar configuración**
-en la terminal voy al directorio
-
+Navego al directorio de configuración:  
 `cd /MagicMirror/config/`
 
-abro el archivo de config.js en thonny para modificarlo mas facil, al final copie todo y lo modifique en mi lap y ya despues nomas lo pegue en thonny porque era mas facil
+Abro el archivo de config.js en Thonny para modificarlo más fácil, al final copié todo y lo modifiqué en mi lap y ya después nomás lo pegué en Thonny porque era más fácil.
 
 ![alt text](img/image.png)
 
-de la configuracion general, solo cambie el idioma y el timeFormat
-`language: "spa", // cambio el idioma a español`
+De la configuración general, solo cambié el idioma y el timeFormat  
+`language: "spa"`  
+`timeFormat: 12`
 
-`	timeFormat: 12, // cambio el formato de horas de 24 a 12 `
+## Módulos
 
-https://docs.magicmirror.builders/configuration/introduction.html
+**Configurar módulos existentes**
 
+Para esto seguí editando el archivo de config.js.  
+Ahora en la parte de modules, cambié algunas configuraciones para ver qué hacían:  
+https://docs.magicmirror.builders/modules/configuration.html  
+Toda la info está en esta página.
 
-**Autostart**
-Para que se incie solo usaremos PM2, es un gestor de procesos avanzado para aplicaciones Node.js que garantiza que las aplicaciones estén siempre activas
-
-abro la terminal y instalo PM2
-`sudo npm install -g pm2`
-
-para que siempre se inicie al encender la raspberry
-`pm2 startup`
-
-... luego
-
-https://docs.magicmirror.builders/configuration/autostart.html
-
-
-## Modulos
-**Configurar modulos existentes**
-
-para esto segui editando el archivo de conofig.js
-ahora en la parte de modules, cambie algunas configuraciones para ver que hacian
-https://docs.magicmirror.builders/modules/configuration.html
-toda la info esta en esta pagina 
-
-cuando llegue a la parte del **calendario**, queria que se viera mi calendario no el gringo que estaba ahi, en el mismo documento decia que podia poner cualquier
-calandario en iCal, entonces fui a mi calendario de google
+Cuando llegué a la parte del **calendario**, quería que se viera mi calendario, no el gringo que estaba ahí. En el mismo documento decía que podía poner cualquier calendario en iCal, entonces fui a mi calendario de Google.
 
 ![alt text](img/image-1.png)
 
-en el apartado de configuracion, eligo el calendario que quiero, y luego le doy al apartado donde dice Integrar calendario, aqui aparece un link 
-con el calendario en el formato iCal que ocupaba, primero copie el link que dice direccion publica en formato iCal y no funcionaba, decia que no lo encontraba, entonces copie el que si era, el que dice direccion secreta en formato iCal y ya funciono.
+En el apartado de configuración, elijo el calendario que quiero y luego le doy al apartado donde dice Integrar calendario; aquí aparece un link con el calendario en el formato iCal que ocupaba. Primero copié el link que dice dirección pública en formato iCal y no funcionaba, decía que no lo encontraba. Entonces copié el que sí era, el que dice dirección secreta en formato iCal, y ya funcionó.
+
 
 ![alt text](img/image-2.png)
 
-creo que el modulo de complementos es de mis favoritos
-Puedes elegir los cumplidos segun el momento del dia, segun la fecha y si lo integramos con el modulo de clima tambien se puede dependiendo del clima
+
+Creo que el módulo de complementos es de mis favoritos.  
+Puedes elegir los cumplidos según el momento del día, según la fecha y, si lo integramos con el módulo de clima, también se puede dependiendo del clima.
+
 
 `compliments: {
     "....-03-20": [
@@ -271,72 +233,162 @@ Puedes elegir los cumplidos segun el momento del dia, segun la fecha y si lo int
     ]
   }`
 
-tambien hay una opcion para que los tomara desde un repositorio remoto, pero como no encontre ninguno en español, decidi hacer uno
-aqui puse los cumplidos que queria que dijera, lo subi a github y es muy importante copiar la direccion como raw code, primero copie la direccion normal del archivo y no funciono.
+También hay una opción para que los tomara desde un repositorio remoto, pero como no encontré ninguno en español, decidí hacer uno.
+
+Subí a mi github un achivo que se llama compliments.json
+
+```
+{
+  "morning": [
+    "Slay",
+    "Loba loba",
+    "A los culos no les hacen corridos",
+    "Mereces todo lo bueno que la vida te ofrece",
+    "Echale ganas"
+  ],
+  "afternoon": [
+    "¡Ánimo!",
+    "Eres suficiente, exactamente tal y como eres hoy",
+    "tú misma brillas",
+    "DIVA",
+    "Tienes que confiar porque si no confias, no hay confianza."
+  ],
+  "evening": [
+    "Descansa",
+    "A mimir",
+    "DUERMETE",
+    "lowkey"
+  ],
+  "....-01-01": [
+    "¡FELIZ AÑO NUEVO!"
+  ],
+  "....-12-24": [
+    "¡Feliz Nochebuena!"
+  ],
+  "....-12-25": [
+    "¡FELIZ NAVIDAAAD!",
+    "HOHOHO"
+  ],
+  "....-12-31": [
+    "Feliz noche vieja.",
+    "Ve sacando las maletas.",
+    "Pasado pisado."
+  ]
+}
+```
+Aquí puse los cumplidos que quería que dijera, es muy importante copiar la dirección como *raw code*; primero copié la dirección normal del archivo y no funcionó.
 
 `remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',`
 
-asi va por ahora 
+Así quedo el archivo de configuración
+```
+/* Config Sample
+ *
+ * For more information on how you can configure this file
+ * see https://docs.magicmirror.builders/configuration/introduction.html
+ * and https://docs.magicmirror.builders/modules/configuration.html
+ *
+ * You can use environment variables using a `config.js.template` file instead of `config.js`
+ * which will be converted to `config.js` while starting. For more information
+ * see https://docs.magicmirror.builders/configuration/introduction.html#enviromnent-variables
+ */
+let config = {
+    address: "localhost",	// Address to listen on, can be:
+                            // - "localhost", "127.0.0.1", "::1" to listen on loopback interface
+                            // - another specific IPv4/6 to listen on a specific interface
+                            // - "0.0.0.0", "::" to listen on any interface
+                            // Default, when address config is left out or empty, is "localhost"
+    port: 8080,
+    basePath: "/",	// The URL path where MagicMirrorÂ² is hosted. If you are using a Reverse proxy
+                                    // you must set the sub path here. basePath must end with a /
+    ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"],	// Set [] to allow all IP addresses
+                                    // or add a specific IPv4 of 192.168.1.5 :
+                                    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
+                                    // or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
+                                    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
+
+    useHttps: false,			// Support HTTPS or not, default "false" will use HTTP
+    httpsPrivateKey: "",	// HTTPS private key path, only require when useHttps is true
+    httpsCertificate: "",	// HTTPS Certificate path, only require when useHttps is true
+
+    language: "es", // cambio el idioma a español
+
+    logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
+    timeFormat: 12, // cambio el formato de horas de 24 a 12 
+    units: "metric",
+
+    modules: [
+        {
+            module: "alert",
+            config: {
+                welcome_message: "Hola bb"
+            }
+        },
+        {
+            module: "updatenotification",
+            position: "top_bar"
+        },
+        {
+            module: "clock",
+            position: "top_left", 
+            config: {
+                timeFormat: 12,
+                timezone: "America/Mazatlan",
+                displaySeconds: false,
+                showWeek: true,
+                showMoonTimes: true,
+                dateFormat: "dddd, Do MMMM YYYY"
+            },
+        },
+        {
+            module: "calendar",
+            header: "Calendario",
+            position: "top_left",
+            config: {
+                calendars: [
+                    {
+                        maximumNumberOfDays: 10,
+                        fetchInterval: 24 * 60 * 60 * 1000,
+                        dateFormat: "DD/MM/YY",
+                        symbol: "calendar-check",
+                        url: "https://calendar.google.com/calendar/ical/hanna.amadorholamundo%40gmail.com/private-bfdcd8902d24f8d790b54c3267d4ffdf/basic.ics"
+                    }
+                ]
+            }
+        },
+        {
+            module: "compliments",
+            position: "bottom_bar",
+            config: {
+                remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',
+                compliments: {
+                    "....-03-20": [
+                        "funciono!"
+                    ]
+                }
+            }
+        },
+        {
+            module: "weather",
+            position: "top_right",
+            config: {
+                weatherProvider: "openmeteo",
+                type: "current",
+                onlyTemp: true,
+                lat: 24.8091,
+                lon: -107.3940
+            }
+        }
+
+    ]
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") { module.exports = config; }
+
+```
+
+Ya así se ve por ahora el Magic Mirror
 
 ![alt text](img/image-5.png)
-
-## Sensor
-
-**Proximidad**
-
-primero voy a probar que el sensor funcione bien y luego añado el modulo
-
-conecte el sensor a los pines
-vcc
-gdc
-amarillo
-
-![gpios](img/image-7.png)
-
-pines de la raspberry
-
-![alt text](img/image-6.png)
-
-instalo la libreria para los gpios, escribo en la terminal 
-`sudo apt install python3-rpi.gpio`
-
-y lo pruebo con este script
-https://wokwi.com/projects/359631459962659841
-solo tuve que cambiar una libreria porque usaba una que no estaba disponible 
-
-ajusto los potenciometros de holdtime y sensibility
-
-ahora si añado el modulo
-
-https://github.com/paviro/MMM-PIR-Sensor
-
-sigo las instrucciones
-dice que primero navege por magicmirror, modules y clone el modulo 
-
-![alt text](image.png)
-
-`npm install`
-
-para instalar todas las dependencias del modulo 
-
-Add your user (pi?) to the gpio group by executing sudo usermod -a -G gpio pi.
-
-`sudo usermod -a -G gpio hanna`
-
-Execute sudo chmod u+s /opt/vc/bin/tvservice && sudo chmod u+s /bin/chvt to allow turning on/off the hdmi output.
-
-`sudo chmod u+s /usr/bin/chvt`
-
-añado el modulo a config.js
-
-como que no se instalaron bien todas las dependencias
-
-ademas dice que ocupa
-
-`npm install wiring-pi`
-
-dio errores no pude
-
-
-
 
