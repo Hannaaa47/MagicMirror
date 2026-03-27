@@ -9,17 +9,17 @@
   - [Corte y armado](#corte-y-armado)
 
 **[Fase 1: Que funcione](#fase-1-que-funcione)**
-  - [Distribución de Linux](#distribución-de-linux)
-  - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
-  - [Instalación de Node.js](#instalación-de-nodejs)
+  - [Distribución de Linux](#distribucion-de-linux)
+  - [Instalación del sistema operativo](#instalacion-del-sistema-operativo)
+  - [Instalación de Node.js](#instalacion-de-nodejs)
   - [Clonar repositorio](#clonar-repositorio)
   - [Primer arranque](#primer-arranque)
   - [Solución de errores](#solución-de-errores)
 
-**[Fase 2: Configuración, módulos](#fase-2-configuración-modulos-y-sensores)**
+**[Fase 2: Configuración, módulos](#fase-2-configuracion-modulos-y-sensores)**
 - [Configurar](#configurar)
-  - [Orientación de pantalla](#orientación-de-pantalla)
-  - [Módulos existentes](#módulos-existentes)
+  - [Orientación de pantalla](#orientacion-de-pantalla)
+  - [Módulos existentes](#modulos-existentes)
 
 
 # Ensamblaje
