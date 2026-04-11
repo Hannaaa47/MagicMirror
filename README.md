@@ -4,7 +4,7 @@
   
 # Contenido
 
-**[Ensamblaje](#ensamblaje)**
+**[Fase 0: Ensamblaje](#ensamblaje)**
   - [Materiales](#materiales)
   - [Corte y armado](#corte-y-armado)
 
@@ -56,6 +56,14 @@ Añadimos soportes de madera en la parte trasera para sostener el espejo y el mo
 Y asi se ve
 
 <img src="img/frente.jpeg" alt="Vista frontal" height="400">
+
+Para añadir el sensor de proximidad tubimos que hacer un hoyo
+
+blabla
+
+volvimos a montar todo
+quitamos los protectores del espejo
+y agregamos carton para que no pase la luz en las zonas que no lo cubre la pantalla
 
 # Fase 1: Que funcione
 
@@ -356,8 +364,8 @@ git clone https://github.com/jupadin/MMM-NBA.git
 cd MMM-NBA
 npm install
 
-Ya así se ve por ahora el Magic Mirror
-
+### Remote Control
+https://github.com/Jopyth/MMM-Remote-Control
 
 ### Sensor de proximidad
 No logramos hacer que funcionara porque daba error por una libreria
