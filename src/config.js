@@ -105,7 +105,34 @@ let config = {
                 presenceIndicatorColor: "#f51d16", // Customizing the indicator
                 presenceOffIndicatorColor: "#2b271c" // Customizing the indicator
             }
+        },
+        {
+            module: 'MMM-EmbedYoutube', // Path to youtube module from modules folder Exmaple: MagicMirror/modules/custom/MMM-EmbedYoutube/ so it's custom/MMM-EmbedYoutube
+            position: 'bottom_center', // This can be any of the regions.
+            config: {
+            // See 'Configuration options' in README.md for more information.
+            video_id: '9bZkp7q19f0',
+            loop: true,
+            },
+        },
+        {
+            module: "MMM-NBA",
+            header: "MMM-NBA",
+            position: "top_left",
+            config: {
+                animationSpeed: 2000,
+                updateInterval: 3600000,
+                updateIntervalLive: 6000,
+                colored: true,
+                focus_on: false,
+                timeFormat: "dd. HH:mm",
+                showHeaderAsIcons: false,
+                showFooter: true,
+                numMaxPastGames: 2,
+                numMaxFutureGames: 10
+            }
         }
+
 
     ]
 };

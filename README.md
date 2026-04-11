@@ -68,7 +68,7 @@ En proyectos anteriores había trabajado con Raspbian OS de 64 bits (Debian 12 B
  
 Por lo tanto, optamos por **Raspberry Pi OS de 64 bits**.
 
-### Instalación del sistema operativo
+### Instalacion del sistema operativo
 
 Para usarlo, lo primero que hice fue instalar Raspberry Pi Imager.
 
@@ -98,7 +98,7 @@ Busco actualizaciones
 Para esto voy a seguir los pasos que dice la página oficial  
 https://docs.magicmirror.builders/getting-started/installation.html
 
-### Instalación de Node.js
+### Instalacion de Node.js
 
 Dice que el primer paso es **descargar e instalar node.js**
 
@@ -175,7 +175,7 @@ Y ya funcionó
 
 ![funciono](img/Funciono.png)
 
-# Fase 2: Configuración, módulos y sensores
+# Fase 2: Configuracion, módulos y sensores
 
 ## Configurar
 
@@ -204,16 +204,29 @@ De la configuración general, solo cambié el idioma y el timeFormat
 `language: "spa"`  
 `timeFormat: 12`
 
+### Autostart
+
+
 ## Módulos
 
-**Configurar módulos existentes**
+### Configurar módulos existentes 
 
 Para esto seguí editando el archivo de config.js.  
 Ahora en la parte de modules, cambié algunas configuraciones para ver qué hacían:  
 https://docs.magicmirror.builders/modules/configuration.html  
 Toda la info está en esta página.
 
-Cuando llegué a la parte del **calendario**, quería que se viera mi calendario, no el gringo que estaba ahí. En el mismo documento decía que podía poner cualquier calendario en iCal, entonces fui a mi calendario de Google.
+**Alert**
+Configuramos este modulo para que cada que vez que se inicie el magic mirror muestre un mensaje que diga "Hola bb".
+
+**Update notification**
+Mostrará un mensaje cada vez que haya una nueva versión de la aplicación MagicMirror disponible.
+
+**Clock**
+Este modulo es el que se encarga de mostrar el reloj, ademas 
+
+**Calendario**
+Cuando llegué a la parte del calendario, quería que se viera mi calendario, no el gringo que estaba ahí. En el mismo documento decía que podía poner cualquier calendario en iCal, entonces fui a mi calendario de Google.
 
 ![alt text](img/image-1.png)
 
@@ -222,7 +235,7 @@ En el apartado de configuración, elijo el calendario que quiero y luego le doy 
 
 ![alt text](img/image-2.png)
 
-
+**Complementos**
 Creo que el módulo de complementos es de mis favoritos.  
 Puedes elegir los cumplidos según el momento del día, según la fecha y, si lo integramos con el módulo de clima, también se puede dependiendo del clima.
 
@@ -276,117 +289,13 @@ Subí a mi github un achivo que se llama compliments.json
   ]
 }
 ```
+
 Aquí puse los cumplidos que quería que dijera, es muy importante copiar la dirección como *raw code*; primero copié la dirección normal del archivo y no funcionó.
 
 `remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',`
 
-Así quedo el archivo de configuración
-```
-/* Config Sample
- *
- * For more information on how you can configure this file
- * see https://docs.magicmirror.builders/configuration/introduction.html
- * and https://docs.magicmirror.builders/modules/configuration.html
- *
- * You can use environment variables using a `config.js.template` file instead of `config.js`
- * which will be converted to `config.js` while starting. For more information
- * see https://docs.magicmirror.builders/configuration/introduction.html#enviromnent-variables
- */
-let config = {
-    address: "localhost",	// Address to listen on, can be:
-                            // - "localhost", "127.0.0.1", "::1" to listen on loopback interface
-                            // - another specific IPv4/6 to listen on a specific interface
-                            // - "0.0.0.0", "::" to listen on any interface
-                            // Default, when address config is left out or empty, is "localhost"
-    port: 8080,
-    basePath: "/",	// The URL path where MagicMirrorÂ² is hosted. If you are using a Reverse proxy
-                                    // you must set the sub path here. basePath must end with a /
-    ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"],	// Set [] to allow all IP addresses
-                                    // or add a specific IPv4 of 192.168.1.5 :
-                                    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
-                                    // or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
-                                    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
 
-    useHttps: false,			// Support HTTPS or not, default "false" will use HTTP
-    httpsPrivateKey: "",	// HTTPS private key path, only require when useHttps is true
-    httpsCertificate: "",	// HTTPS Certificate path, only require when useHttps is true
 
-    language: "es", // cambio el idioma a español
-
-    logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
-    timeFormat: 12, // cambio el formato de horas de 24 a 12 
-    units: "metric",
-
-    modules: [
-        {
-            module: "alert",
-            config: {
-                welcome_message: "Hola bb"
-            }
-        },
-        {
-            module: "updatenotification",
-            position: "top_bar"
-        },
-        {
-            module: "clock",
-            position: "top_left", 
-            config: {
-                timeFormat: 12,
-                timezone: "America/Mazatlan",
-                displaySeconds: false,
-                showWeek: true,
-                showMoonTimes: true,
-                dateFormat: "dddd, Do MMMM YYYY"
-            },
-        },
-        {
-            module: "calendar",
-            header: "Calendario",
-            position: "top_left",
-            config: {
-                calendars: [
-                    {
-                        maximumNumberOfDays: 10,
-                        fetchInterval: 24 * 60 * 60 * 1000,
-                        dateFormat: "DD/MM/YY",
-                        symbol: "calendar-check",
-                        url: "https://calendar.google.com/calendar/ical/hanna.amadorholamundo%40gmail.com/private-bfdcd8902d24f8d790b54c3267d4ffdf/basic.ics"
-                    }
-                ]
-            }
-        },
-        {
-            module: "compliments",
-            position: "bottom_bar",
-            config: {
-                remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',
-                compliments: {
-                    "....-03-20": [
-                        "funciono!"
-                    ]
-                }
-            }
-        },
-        {
-            module: "weather",
-            position: "top_right",
-            config: {
-                weatherProvider: "openmeteo",
-                type: "current",
-                onlyTemp: true,
-                lat: 24.8091,
-                lon: -107.3940
-            }
-        }
-
-    ]
-};
-
-/*************** DO NOT EDIT THE LINE BELOW ***************/
-if (typeof module !== "undefined") { module.exports = config; }
-
-```
 
 Ya así se ve por ahora el Magic Mirror
 
