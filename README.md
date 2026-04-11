@@ -43,19 +43,19 @@
  
 Ya que conseguimos la madera, calculamos y marcamos los cortes necesarios. La madera de 3" se cortó en 2 piezas de 29.8 cm y 2 piezas de 57.3 cm para hacer el frente; la madera de 4" se cortó en 2 piezas de 42.6 cm y 2 piezas de 54.3 cm para los lados.
  
-![Corte de madera](img/corte.jpeg)
+<img src="img/corte.jpeg" alt="Corte de madera" height="400">
  
 Después lijamos la madera y unimos las piezas con tornillos para formar el marco.
- 
-![Armado del marco](img/armar.jpeg)
+
+<img src="img/armar.jpeg" alt="Armado del marco" height="400">
  
 Añadimos soportes de madera en la parte trasera para sostener el espejo y el monitor. Pegamos el Raspberry Pi al monitor con cinta doble cara y conectamos todos los componentes. Como el monitor solo tiene entrada VGA y el Raspberry Pi solo tiene salida HDMI, fue necesario usar un adaptador.
 
-![Vista trasera](img/atras.jpeg)
+<img src="img/atras.jpeg" alt="Vista trasera" height="400">
 
 Y asi se ve
 
-![Vista frontal](img/frente.jpeg)
+<img src="img/frente.jpeg" alt="Vista frontal" height="400">
 
 # Fase 1: Que funcione
 
