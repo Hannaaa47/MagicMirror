@@ -87,38 +87,28 @@ let config = {
         {
             module: "weather",
             position: "top_right",
+            header: "Culiacán, Sinaloa",
             config: {
-                weatherProvider: "openmeteo",
-                type: "current",
-                onlyTemp: true,
-                lat: 24.8091,
-                lon: -107.3940
+                weatherProvider: "openmeteo", //
+                type: "current", //
+                lat: 24.8091, //
+                lon: -107.3940, //
+                units: "metric",
+                timeFormat: 12,
+                timezone: "America/Mazatlan",
+                onlyTemp: false,       // true
+                showHumidity: true,    
+                showWindDirection: true,
+                showWindDirectionAsArrow: true,
+                showFeelsLike: true,   
+                useBeaufort: false,     
+                //lang: "es",         
             }
-        },
-        {
-            module: 'MMM-PIR-Sensor', 
-            position: "lower_third", // Remove this line to avoid having an visible indicator
-            config: {
-                powerSavingDelay: 60, // Turn HDMI OFF after 60 seconds of no motion, until motion is detected again
-                presenceIndicator: "fa-eye", // Customizing the indicator
-                presenceOffIndicator: "eye-slash", // Customizing the indicator
-                presenceIndicatorColor: "#f51d16", // Customizing the indicator
-                presenceOffIndicatorColor: "#2b271c" // Customizing the indicator
-            }
-        },
-        {
-            module: 'MMM-EmbedYoutube', // Path to youtube module from modules folder Exmaple: MagicMirror/modules/custom/MMM-EmbedYoutube/ so it's custom/MMM-EmbedYoutube
-            position: 'bottom_center', // This can be any of the regions.
-            config: {
-            // See 'Configuration options' in README.md for more information.
-            video_id: '9bZkp7q19f0',
-            loop: true,
-            },
         },
         {
             module: "MMM-NBA",
             header: "MMM-NBA",
-            position: "top_left",
+            position: "bottom_left",
             config: {
                 animationSpeed: 2000,
                 updateInterval: 3600000,
@@ -132,6 +122,31 @@ let config = {
                 numMaxFutureGames: 10
             }
         }
+        /*
+        ,{
+            module: 'MMM-PIR-Sensor', 
+            position: "lower_third", // Remove this line to avoid having an visible indicator
+            config: {
+                powerSavingDelay: 60, // Turn HDMI OFF after 60 seconds of no motion, until motion is detected again
+                presenceIndicator: "fa-eye", // Customizing the indicator
+                presenceOffIndicator: "eye-slash", // Customizing the indicator
+                presenceIndicatorColor: "#f51d16", // Customizing the indicator
+                presenceOffIndicatorColor: "#2b271c" // Customizing the indicator
+            }
+        },
+        */
+        /*
+        {
+            module: 'MMM-EmbedYoutube', // Path to youtube module from modules folder Exmaple: MagicMirror/modules/custom/MMM-EmbedYoutube/ so it's custom/MMM-EmbedYoutube
+            position: 'bottom_center', // This can be any of the regions.
+            config: {
+            // See 'Configuration options' in README.md for more information.
+            video_id: '9bZkp7q19f0',
+            loop: true,
+            },
+        }
+        */
+        
 
 
     ]

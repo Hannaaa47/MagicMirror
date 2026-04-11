@@ -177,9 +177,7 @@ Y ya funcionó
 
 # Fase 2: Configuracion, módulos y sensores
 
-## Configurar
-
-#### Orientación de pantalla
+## Orientación de pantalla
 Para cambiar la orientación de la pantalla en Raspberry Pi voy a Menú > Preferences > Control Center.  
 Ingreso la contraseña.
 
@@ -191,7 +189,7 @@ Selecciono left
 
 ![alt text](img/aceptarConfiguracion.png)
 
-#### Configuración general
+## Configuración general
 
 Navego al directorio de configuración:  
 `cd /MagicMirror/config/`
@@ -204,28 +202,78 @@ De la configuración general, solo cambié el idioma y el timeFormat
 `language: "spa"`  
 `timeFormat: 12`
 
-### Autostart
+## Autostart
 
+Para hacer esto fue bastante facil, solo seguimos los pasos del documento de magic mirror
 
-## Módulos
+Instalamos PM2 usando NPM, PM2 es un gestor de procesos de producción para aplicaciones Node.js con balanceador de carga integrado. 
 
-### Configurar módulos existentes 
+`sudo npm install -g pm2`
+
+Para que PM2 pueda funcionar correctamente al reiniciar el sistema operativo, debe iniciarse al arrancar. 
+
+`pm2 startup`
+
+PM2 le mostrará ahora el comando que debe ejecutar.
+
+![alt text](<Captura de pantalla 2026-04-08 173855.png>)
+
+Para usar PM2 junto con MagicMirror², necesitamos crear un script de shell sencillo. 
+
+```
+cd ~ 
+nano mm.sh 
+```
+
+Agregue las siguientes líneas:
+
+```
+cd ./MagicMirror
+DISPLAY=:0 node --run start
+```
+
+Guarda y cierra usando los comandos CTRL-Oy CTRL-X. Ahora asegúrate de que el script de shell sea ejecutable ejecutando el siguiente comando:
+
+`chmod +x mm.sh`
+
+Ya puedes usar MagicMirror² con este script usando PM2.
+
+Cómo empezar a usar MagicMirror² con PM2
+
+`pm2 start mm.sh`
+
+El espejo debería iniciarse y aparecer en la pantalla después de unos segundos.
+
+Habilitar el reinicio del script MagicMirror²
+Para asegurarte de que MagicMirror² se reinicie después de reiniciar el sistema, debes guardar el estado actual de todos los scripts que se ejecutan a través de PM2. Para ello, ejecuta el siguiente comando.
+
+`pm2 save`
+
+¡Y eso es todo! Tu MagicMirror² debería reiniciarse después de encenderse y volver a encenderse después de cualquier fallo.
+
+Normalmente cerrabamos el magic mirror con ctrl c en la terminal pero con el autostart usamos ctrl q y abriamos una terminal para poner 
+esto 
+`pm2 stop MagicMirror` 
+antes de que se volviera a abrir.
+
+## Módulos predeterminados
 
 Para esto seguí editando el archivo de config.js.  
 Ahora en la parte de modules, cambié algunas configuraciones para ver qué hacían:  
 https://docs.magicmirror.builders/modules/configuration.html  
 Toda la info está en esta página.
 
-**Alert**
+### Alert
+
 Configuramos este modulo para que cada que vez que se inicie el magic mirror muestre un mensaje que diga "Hola bb".
 
-**Update notification**
+### Update notification
 Mostrará un mensaje cada vez que haya una nueva versión de la aplicación MagicMirror disponible.
 
-**Clock**
-Este modulo es el que se encarga de mostrar el reloj, ademas 
+### Clock
+Este modulo es el que se encarga de mostrar el reloj.
 
-**Calendario**
+### Calendar
 Cuando llegué a la parte del calendario, quería que se viera mi calendario, no el gringo que estaba ahí. En el mismo documento decía que podía poner cualquier calendario en iCal, entonces fui a mi calendario de Google.
 
 ![alt text](img/image-1.png)
@@ -235,7 +283,7 @@ En el apartado de configuración, elijo el calendario que quiero y luego le doy 
 
 ![alt text](img/image-2.png)
 
-**Complementos**
+### Compliments
 Creo que el módulo de complementos es de mis favoritos.  
 Puedes elegir los cumplidos según el momento del día, según la fecha y, si lo integramos con el módulo de clima, también se puede dependiendo del clima.
 
@@ -295,9 +343,40 @@ Aquí puse los cumplidos que quería que dijera, es muy importante copiar la dir
 `remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',`
 
 
+### Weather
+Para ver el clima
 
+## Modulos de terceros
+
+### NBA
+https://github.com/jupadin/MMM-NBA
+
+cd modules
+git clone https://github.com/jupadin/MMM-NBA.git
+cd MMM-NBA
+npm install
 
 Ya así se ve por ahora el Magic Mirror
 
-![alt text](img/image-5.png)
+
+### Sensor de proximidad
+No logramos hacer que funcionara porque daba error por una libreria
+
+https://github.com/paviro/MMM-PIR-Sensor
+
+### Youtube
+No podia poner el embed 
+![alt text](<Captura de pantalla 2026-04-08 162911.png>)
+
+![alt text](<Captura de pantalla 2026-04-08 163249.png>)
+
+
+![alt text](<Captura de pantalla 2026-04-08 165817.png>)
+
+
+https://gitlab.com/doctorfree/MMM-YouTubeWebView
+
+
+
+
 
