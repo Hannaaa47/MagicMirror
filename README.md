@@ -224,7 +224,7 @@ Para que PM2 pueda funcionar correctamente al reiniciar el sistema operativo, de
 
 PM2 le mostrará ahora el comando que debe ejecutar.
 
-![alt text](<Captura de pantalla 2026-04-08 173855.png>)
+![alt text](<img/Captura de pantalla 2026-04-08 173855.png>)
 
 Para usar PM2 junto con MagicMirror², necesitamos crear un script de shell sencillo. 
 
@@ -352,43 +352,103 @@ Aquí puse los cumplidos que quería que dijera, es muy importante copiar la dir
 
 
 ### Weather
-Para ver el clima
+
+Para ver el clima, se puede configurar que solo muestre la temperatura, o que muestre la sensacion termica, es necesario ponerle las cordenadas para que funcione.
 
 ## Modulos de terceros
 
 ### NBA
+
+Este modulo muestra el score de partidos de la nba en directo y tambien muestra los siguientes juegos programados, para añadir este modulo, seguimos las instrucciones que venian en el readme del modulo.
+
 https://github.com/jupadin/MMM-NBA
 
-cd modules
+```
+cd ~/MagicMirror/modules
 git clone https://github.com/jupadin/MMM-NBA.git
 cd MMM-NBA
 npm install
+```
+
+Y añadimos su configuracion en el archivo de config.js
 
 ### Remote Control
+
+Este módulo permite usar un navegador para apagar rápidamente tu espejo, ocultar y mostrar módulos en tu espejo y hacer otras cosas interesantes. Para acceder al control puedes escanear un codigo QR o ir al sitio web.
+
 https://github.com/Jopyth/MMM-Remote-Control
 
+Los pasos a seguir parecidos al repositorio pasado.
+
+```
+cd ~/MagicMirror/modules
+git clone https://github.com/Jopyth/MMM-Remote-Control
+cd MMM-Remote-Control
+npm ci --omit=dev
+```
+
+`npm ci --omit=dev` sirve para instalar dependencias de forma limpia
+
+Y añadimos su configuracion en el archivo de config.js, ademas para este modulo tambien modificamos la direccion y la ipWhitelist, para que cualquiera pueda acceder al sitio web para controlar el espejo.
+
+```
+  address: '0.0.0.0',
+  port: 8080,
+  ipWhitelist: [],
+```
+
+Probando las cosas que era capaz de hacer, nos dimos cuenta que no apagaba el monitor, esto debido a un problema con los drivers, por lo que editamos el archivo de configuración
+
+`sudo nano /boot/firmware/config.txt`
+
+Buscamos la linea
+
+`dtoverlay=vc4-kms-v3d`
+
+Y la cambiamos por 
+
+`dtoverlay=vc4-fkms-v3d`
+
+Y reiniciamos el espejo.
+
 ### Sensor de proximidad
-No logramos hacer que funcionara porque daba error por una libreria
+
+Este modulo sirver para que a traves de un sensor de proximidad el espejo sepa si esta en uso o no, si despues de un tiempo predeteminado no detecta movimiento este apagara el monitor y si vuelve a detectar movimiento prende el monitor.
+Primero intentamos usar este modulo 
 
 https://github.com/paviro/MMM-PIR-Sensor
 
-ocupaba la libreria onoff, pero parece que ya no tiene soporte y no es compatible con la version que tenermos de electron
+Pero no logramos hacer que funcionara porque daba error
+` [ERROR] [app] Error when loading MMM-PIR-Sensor: Cannot find module 'onoff' `
 
-asi que intentare con este otro modulo 
+Y aunque intentaramos instalar de nuevo esa libreria salian muchos `warn deprecaded` y `npm error`
+
+Así que mejor probamos con este otro modulo, este si funciono.
+
 https://gitlab.com/khassel/MMM-Universal-Pir
+
+Seguimos las instrucciones del modulo.
+Primero copiamos el repo 
+
+```
+cd ~/MagicMirror/modules
+git clone https://gitlab.com/khassel/MMM-Universal-Pir.git
+```
+
+Luego probamos la configuracion por default a ver si funciona, al principio el modulo se mostraba pero el sensor no estaba funcionando para nada.
+Porque la configuracion por default estaba mal, tenia el pin del sensor mal y tambien el comando para prender y apagar el monitor.
 
 
 ### Youtube
-No podia poner el embed 
-![alt text](<Captura de pantalla 2026-04-08 162911.png>)
-
-![alt text](<Captura de pantalla 2026-04-08 163249.png>)
-
-
-![alt text](<Captura de pantalla 2026-04-08 165817.png>)
-
+Intentamos poner este modulo para mostrar videos de youtube pero no pudimos resolver un problema
 
 https://gitlab.com/doctorfree/MMM-YouTubeWebView
+
+No podia mostrar los videos porque estaban con el la etiqueta embeded
+
+
+
+
 
 
 
