@@ -261,7 +261,7 @@ Para asegurarte de que MagicMirror² se reinicie después de reiniciar el sistem
 
 Normalmente cerrabamos el magic mirror con ctrl c en la terminal pero con el autostart usamos ctrl q y abriamos una terminal para poner 
 esto 
-`pm2 stop MagicMirror` 
+`pm2 stop mm` 
 antes de que se volviera a abrir.
 
 ## Módulos predeterminados
@@ -371,6 +371,12 @@ https://github.com/Jopyth/MMM-Remote-Control
 No logramos hacer que funcionara porque daba error por una libreria
 
 https://github.com/paviro/MMM-PIR-Sensor
+
+ocupaba la libreria onoff, pero parece que ya no tiene soporte y no es compatible con la version que tenermos de electron
+
+asi que intentare con este otro modulo 
+https://gitlab.com/khassel/MMM-Universal-Pir
+
 
 ### Youtube
 No podia poner el embed 

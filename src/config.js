@@ -9,31 +9,23 @@
  * see https://docs.magicmirror.builders/configuration/introduction.html#enviromnent-variables
  */
 let config = {
-    address: "localhost",	// Address to listen on, can be:
-    // - "localhost", "127.0.0.1", "::1" to listen on loopback interface
-    // - another specific IPv4/6 to listen on a specific interface
-    // - "0.0.0.0", "::" to listen on any interface
-    // Default, when address config is left out or empty, is "localhost"
-    port: 8080,
+	address: '0.0.0.0',
+	port: 8080,
+	ipWhitelist: [],
+    
     basePath: "/",	// The URL path where MagicMirrorÂ² is hosted. If you are using a Reverse proxy
     // you must set the sub path here. basePath must end with a /
-    ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1"],	// Set [] to allow all IP addresses
-    // or add a specific IPv4 of 192.168.1.5 :
-    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
-    // or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
-    // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
-
+   
     useHttps: false,			// Support HTTPS or not, default "false" will use HTTP
     httpsPrivateKey: "",	// HTTPS private key path, only require when useHttps is true
     httpsCertificate: "",	// HTTPS Certificate path, only require when useHttps is true
 
-    language: "es", // cambio el idioma a español
+    language: "es", // cambio el idioma a espaol
 
     logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
     timeFormat: 12, // cambio el formato de horas de 24 a 12 
     units: "metric",
-
-    modules: [
+	modules: [
         {
             module: "alert",
             config: {
@@ -56,7 +48,7 @@ let config = {
                 dateFormat: "dddd, Do MMMM YYYY"
             },
         },
-        {
+		{
             module: "calendar",
             header: "Calendario",
             position: "top_left",
@@ -77,6 +69,7 @@ let config = {
             position: "bottom_bar",
             config: {
                 remoteFile: 'https://raw.githubusercontent.com/Hannaaa47/MagicMirror/refs/heads/main/src/compliments.json',
+                updateInterval: 60000 ,
                 compliments: {
                     "....-03-20": [
                         "funciono!"
@@ -84,30 +77,28 @@ let config = {
                 }
             }
         },
-        {
+		 {
             module: "weather",
             position: "top_right",
-            header: "Culiacán, Sinaloa",
+           
             config: {
-                weatherProvider: "openmeteo", //
-                type: "current", //
-                lat: 24.8091, //
-                lon: -107.3940, //
+                weatherProvider: "openmeteo", 
+                type: "current", 
+                lat: 24.8091, 
+                lon: -107.3940, 
                 units: "metric",
                 timeFormat: 12,
                 timezone: "America/Mazatlan",
-                onlyTemp: false,       // true
+                onlyTemp: false,       
                 showHumidity: true,
                 showWindDirection: true,
                 showWindDirectionAsArrow: true,
-                showFeelsLike: true,
-                useBeaufort: false,
-                //lang: "es",         
+                showFeelsLike: false,
+                useBeaufort: false,       
             }
         },
         {
             module: "MMM-NBA",
-            header: "MMM-NBA",
             position: "bottom_left",
             config: {
                 animationSpeed: 2000,
@@ -119,7 +110,7 @@ let config = {
                 showHeaderAsIcons: false,
                 showFooter: true,
                 numMaxPastGames: 2,
-                numMaxFutureGames: 10
+                numMaxFutureGames: 3
             }
         },
         {
@@ -144,20 +135,19 @@ let config = {
                 //   "above" - Show QR code above, URL below
                 //   "replace" - Show only QR code, no URL text
             }
-        }
-        /*
-        ,{
-            module: 'MMM-PIR-Sensor', 
-            position: "lower_third", // Remove this line to avoid having an visible indicator
-            config: {
-                powerSavingDelay: 60, // Turn HDMI OFF after 60 seconds of no motion, until motion is detected again
-                presenceIndicator: "fa-eye", // Customizing the indicator
-                presenceOffIndicator: "eye-slash", // Customizing the indicator
-                presenceIndicatorColor: "#f51d16", // Customizing the indicator
-                presenceOffIndicatorColor: "#2b271c" // Customizing the indicator
-            }
         },
-        */
+		{
+            module: "MMM-Universal-Pir",
+            position: "top_right",
+            config: {
+                gpioCommand: "gpiomon -e rising -c 0 22",
+                onCommand: "vcgencmd display_power 1",
+                offCommand: "vcgencmd display_power 0",
+                deactivateDelay: 60 * 1000,
+            }
+        }
+
+        
         /*
         {
             module: 'MMM-EmbedYoutube', // Path to youtube module from modules folder Exmaple: MagicMirror/modules/custom/MMM-EmbedYoutube/ so it's custom/MMM-EmbedYoutube
@@ -169,12 +159,8 @@ let config = {
             },
         }
         */
-
-
-
-    ]
+	]
 };
 
 /*************** DO NOT EDIT THE LINE BELOW ***************/
 if (typeof module !== "undefined") { module.exports = config; }
-
